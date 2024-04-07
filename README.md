@@ -7,7 +7,7 @@
 
 #### DockerHub
 
-- `docker run --name webbylab -p 3000:3000 -e APP_PORT=3000 test_webbylab`
+- `docker run --name webbylab -p 3000:3000 -e APP_PORT=3000 sviatoslavkytsara/test_webbylab`
 
 ### Start local
 
