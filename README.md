@@ -35,7 +35,7 @@
 ! між фільмами 1 пустий рядок
 
 ### API
-`https://gist.github.com/k0stik/3028d42973544dd61c3b4ad863378cad`
+`https://documenter.getpostman.com/view/356840/TzkyLeVK`
 
 ### Validation errors
 Валідатор записує в поля об'єкти з обмеженнями, що були порушені
