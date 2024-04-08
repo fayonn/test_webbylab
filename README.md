@@ -37,6 +37,8 @@
 ### API
 `https://documenter.getpostman.com/view/356840/TzkyLeVK`
 
+! combined search `title AND actor` 
+
 ### Validation errors
 Валідатор записує в поля об'єкти з обмеженнями, що були порушені
 ```json
