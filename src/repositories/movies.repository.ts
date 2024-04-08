@@ -105,7 +105,8 @@ export class MoviesRepository {
     `);
 
     const ids = res[0].map((r: any) => r.movieId);
-    return await this.sequelizeRepository.findAll({
+
+    const movies = await this.sequelizeRepository.findAll({
       where: {
         id: ids,
       },
@@ -113,5 +114,19 @@ export class MoviesRepository {
       offset: offset,
       order: [[sort, order]],
     });
+
+    // charset and collate do not work :( (sequelize, sqlite)
+    let conc: Movie[] = [];
+    if (sort === 'title') {
+      console.log('AAAAAAAAAA');
+      const upper = movies.filter((m) => /^[A-ZА-ЯҐЄІЇ]/.test(m.title));
+      const lower = movies.filter((m) => /^[a-zа-яєіїґ]/.test(m.title));
+
+      upper.sort((a, b) => order === 'ASC' ? a.title.localeCompare(b.title) : -a.title.localeCompare(b.title));
+      lower.sort((a, b) => order === 'ASC' ? a.title.localeCompare(b.title) : -a.title.localeCompare(b.title));
+      conc = order === 'ASC' ? upper.concat(lower) : lower.concat(upper);
+    }
+
+    return conc.length ? conc : movies;
   }
 }

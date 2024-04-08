@@ -1,5 +1,6 @@
-import { IsDateString, IsNotEmpty, IsPositive, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsPositive, IsString, Matches } from 'class-validator';
 import { Expose } from 'class-transformer';
+import { TrimString } from '../../utils/validator.utils';
 
 export class ActorOutDto {
   @IsPositive()
@@ -7,7 +8,7 @@ export class ActorOutDto {
   @Expose()
   id: number;
 
-  @IsString()
+  @TrimString()
   @IsNotEmpty()
   @Expose()
   fullName: string;
